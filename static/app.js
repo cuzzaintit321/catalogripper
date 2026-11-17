@@ -1,0 +1,4 @@
+function hideBroken(img){img.hidden=true;img.style.display='none'}
+document.querySelectorAll('.photo img').forEach(img=>{img.addEventListener('error',()=>hideBroken(img));if(img.complete&&!img.naturalWidth)hideBroken(img)});
+const statusEl=document.getElementById('scan-status');
+if(statusEl){let previous=statusEl.textContent.trim();async function poll(){try{const res=await fetch('/status.json',{cache:'no-store'});if(!res.ok)return;const s=await res.json();statusEl.textContent=s.status;document.getElementById('scan-count').textContent=`${s.pages} pages · ${s.products} records`;document.getElementById('scan-message').textContent=s.message||'';if(previous==='running'&&s.status!=='running'){location.reload();return}previous=s.status}catch(e){/* retain last known status */}}setInterval(poll,3000)}
