@@ -1,3 +1,5 @@
+![CatalogRipper](assets/catalogripper-cover.png)
+
 # CatalogRipper
 Experimental general-purpose successor to Untucked Catalog Sync. Discovers same-host pages through XML sitemaps and links, extracts Schema.org Product JSON-LD and Open Graph product metadata, stores records in SQLite, and exports review CSV. Run `docker compose up --build` and open http://localhost:8135. Local trusted single-user use only; do not expose to the internet. Only crawl stores you own or have permission to crawl. Honors robots rules, uses sequential delayed requests, stops on access denial or rate limiting, and does not bypass challenges. No automatic redirects, JavaScript rendering, platform-specific API integrations or guaranteed coverage. Prices, stock, variants and images require manual verification; not a ready-to-submit merchant feed. DNS checks are defense in depth, not a hardened SSRF boundary; restrict outbound network access if deploying. Original data is not included.
 
